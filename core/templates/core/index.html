@@ -1,0 +1,22 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+<div class="flex justify-between">
+    <ul class="flex gap-2">
+        {% if request.user.is_authenticated %}
+        <!-- <p><strong>{{ request.user.username }}</strong></p> -->
+        <li><a href="{% url 'signout' %}" class="text-blue-500">Sign Out</a></li>
+        <li><a href="{% url 'signout' %}" class="text-blue-500">Profile</a></li>
+        {% else %}
+        <li><a href="{% url 'signin' %}" class="underline text-blue-500">Sign In</a></li>
+        <li><a href="{% url 'signup' %}" class="underline text-blue-500">Sign Up</a></li>
+        {% endif %}
+    </ul>
+</div>
+
+{% if request.user.is_authenticated %}
+<h1 class="">Welcome, {{ request.user.username}}!</h1>
+{% endif %}
+
+
+{% endblock content %}
