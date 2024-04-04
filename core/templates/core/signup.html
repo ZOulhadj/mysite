@@ -1,0 +1,14 @@
+{% extends "core/base.html" %}
+
+
+{% block content %}
+
+{# If user is already logged in, redirect to home #}
+
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Sign Up</button>
+</form>
+
+{% endblock %}

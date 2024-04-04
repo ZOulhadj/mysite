@@ -1,13 +1,22 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 
 from django.views.generic.base import TemplateView
+from django.views.generic import CreateView
 
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+from .forms import SignUpForm
+
 class IndexView(TemplateView):
     template_name = "core/index.html"
+
+class SignUpView(CreateView):
+    form_class = SignUpForm
+    success_url = reverse_lazy("login")
+    template_name = "core/signup.html"
 
 class LoginView(auth_views.LoginView):
     template_name = "core/login.html"
@@ -18,22 +27,28 @@ class LogoutView(auth_views.LogoutView):
     next_page = "/"
 
 class PasswordChangeView(auth_views.PasswordChangeView):
-    template_name = "core/password_change_form.html"
+    #template_name = "core/password_change_form.html"
+    pass
 
 class PasswordChangeDoneView(auth_views.PasswordChangeDoneView):
-    template_name = "core/password_change_done.html"
+    #template_name = "core/password_change_done.html"
+    pass
 
 class PasswordResetView(auth_views.PasswordResetView):
-    template_name = "core/password_reset_form.html"
+    #template_name = "core/password_reset_form.html"
+    pass
 
 class PasswordResetDoneView(auth_views.PasswordResetDoneView):
-    template_name = "core/password_reset_done.html"
+    #template_name = "core/password_reset_done.html"
+    pass
 
 class PasswordResetConfirmView(auth_views.PasswordResetConfirmView):
-    template_name = "core/password_reset_confirm.html"
+    #template_name = "core/password_reset_confirm.html"
+    pass
 
 class PasswordResetCompleteView(auth_views.PasswordResetCompleteView):
-    template_name = "core/password_reset_complete.html"
+    #template_name = "core/password_reset_complete.html"
+    pass
 
 class ProfileView(LoginRequiredMixin, TemplateView):
     login_url = "/login"

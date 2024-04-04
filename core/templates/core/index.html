@@ -1,22 +1,21 @@
 {% extends "core/base.html" %}
 
 {% block content %}
-<section class="bg-stone-800 h-screen">
+<section class="h-screen">
     {% if user.is_authenticated %}
-    <h1 class="text-white">User is authenticated</h1>
-    <a class="text-white underline" href="{% url 'profile' %}">
+    <a class="underline" href="{% url 'profile' %}">
         Profile
     </a>
     <form id="logout-form" method="post" action="{% url 'logout' %}">
         {% csrf_token %}
-        <button class="text-white underline" type="submit">Logout</button>
+        <button class="underline" type="submit">Logout</button>
     </form>
     {% else %}
-    <h1 class="text-white">User is not authenticated</h1>
-    <a class="text-white underline" href="{% url 'login' %}">
+    <h1 class="">User is not authenticated</h1>
+    <a class="underline" href="{% url 'login' %}">
         Login
     </a>
-    <a class="text-white underline" href="{% url 'login' %}">
+    <a class="underline" href="{% url 'signup' %}">
         Sign Up
     </a>
     {% endif %}
