@@ -1,42 +1,41 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.models import Group
 
-from .forms import SignUpForm, SignInForm
+from django.views.generic.base import TemplateView
 
-def index(request):
-    return render(request, "core/index.html")
+from django.contrib.auth import views as auth_views
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-def signup(request):
-    if request.method == "POST":
-        form = SignUpForm(request.POST)
-        if form.is_valid():
-            user = form.save(commit=True)
+class IndexView(TemplateView):
+    template_name = "core/index.html"
 
-            return redirect("signin")
-    else:
-        form = SignUpForm()
+class LoginView(auth_views.LoginView):
+    template_name = "core/login.html"
+    next_page = "profile"
 
-    return render(request, "core/signup.html", { "form": form })
+class LogoutView(auth_views.LogoutView):
+    template_name = "core/logout.html"
 
-def signin(request):
-    if request.method == "POST":
-        form = SignInForm(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data["username"]
-            password = form.cleaned_data["password"]
-            user = authenticate(request, username=username, password=password)
+class PasswordChangeView(auth_views.PasswordChangeView):
+    template_name = "core/password_change_form.html"
 
-            if user is not None:
-                login(request, user)
-                return redirect("/")
-    else:
-        form = SignInForm()
+class PasswordChangeDoneView(auth_views.PasswordChangeDoneView):
+    template_name = "core/password_change_done.html"
 
-    return render(request, "core/signin.html", { "form": form })
+class PasswordResetView(auth_views.PasswordResetView):
+    template_name = "core/password_reset_form.html"
 
-def signout(request):
-    logout(request)
+class PasswordResetDoneView(auth_views.PasswordResetDoneView):
+    template_name = "core/password_reset_done.html"
 
-    return redirect("signin")
+class PasswordResetConfirmView(auth_views.PasswordResetConfirmView):
+    template_name = "core/password_reset_confirm.html"
+
+class PasswordResetCompleteView(auth_views.PasswordResetCompleteView):
+    template_name = "core/password_reset_complete.html"
+
+class ProfileView(LoginRequiredMixin, TemplateView):
+    login_url = "/login"
+    redirect_field_name = "redirect_to"
+
+    template_name = "core/profile.html"
