@@ -4,8 +4,21 @@
 <section class="bg-stone-800 h-screen">
     {% if user.is_authenticated %}
     <h1 class="text-white">User is authenticated</h1>
+    <a class="text-white underline" href="{% url 'profile' %}">
+        Profile
+    </a>
+    <form id="logout-form" method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button class="text-white underline" type="submit">Logout</button>
+    </form>
     {% else %}
     <h1 class="text-white">User is not authenticated</h1>
+    <a class="text-white underline" href="{% url 'login' %}">
+        Login
+    </a>
+    <a class="text-white underline" href="{% url 'login' %}">
+        Sign Up
+    </a>
     {% endif %}
 </section>
 {% endblock content %}

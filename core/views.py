@@ -11,10 +11,11 @@ class IndexView(TemplateView):
 
 class LoginView(auth_views.LoginView):
     template_name = "core/login.html"
-    next_page = "profile"
+    next_page = "/"
 
 class LogoutView(auth_views.LogoutView):
     template_name = "core/logout.html"
+    next_page = "/"
 
 class PasswordChangeView(auth_views.PasswordChangeView):
     template_name = "core/password_change_form.html"
@@ -37,5 +38,4 @@ class PasswordResetCompleteView(auth_views.PasswordResetCompleteView):
 class ProfileView(LoginRequiredMixin, TemplateView):
     login_url = "/login"
     redirect_field_name = "redirect_to"
-
     template_name = "core/profile.html"
