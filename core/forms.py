@@ -6,5 +6,8 @@ from .models import User
 class SignUpForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
-        #fields = UserCreationForm.Meta.fields + ("custom_field",)
-        fields = UserCreationForm.Meta.fields
+        #fields = UserCreationForm.Meta.fields + ("image",)
+        fields = ["username", "password1"]
+
+# class ProfileForm(forms.Form):
+#     pass
