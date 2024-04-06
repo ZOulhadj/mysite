@@ -12,24 +12,21 @@
     </header>
     <main>
         <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-            <!-- Your content -->
-            <div class="">
-                <div class="font-bold">Username</div> {{ user.username }}
-            </div>
             <a href="">
                 <img class="inline-block h-20 w-20 rounded-full ring-2 ring-white hover:ring-stone-200" src="{{user.image.url}}" alt="">
             </a>
-            <div>
-                <a class="text-white bg-green-800 rounded-sm px-2 py-1.5" href="{% url 'password_change' %}">
+
+            <div class="">
+                <div class="font-bold">Username</div> {{ user.username }}
+            </div>
+            <div class="flex gap-2">
+                <a href="{% url 'password_change' %}" class="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
                     Change password
                 </a>
-            </div>
-            <div>
-                <a class="text-white bg-red-600 rounded-sm px-2 py-1.5" href="#">
+                <a href="#" class="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
                     Delete account
                 </a>
             </div>
-
         </div>
     </main>
 </section>

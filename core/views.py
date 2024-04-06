@@ -18,7 +18,6 @@ class SignUpView(CreateView):
     form_class = SignUpForm
     success_url = reverse_lazy("login")
     template_name = "core/signup.html"
-    redirect_authenticated_user = True
 
 class LoginView(auth_views.LoginView):
     template_name = "core/login.html"
@@ -57,8 +56,3 @@ class ProfileView(LoginRequiredMixin, TemplateView):
     login_url = "/login"
     redirect_field_name = "redirect_to"
     template_name = "core/profile.html"
-
-class ExploreView(LoginRequiredMixin, TemplateView):
-    login_url = "/login"
-    redirect_field_name = "redirect_to"
-    template_name = "core/explore.html"
