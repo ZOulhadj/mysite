@@ -8,11 +8,11 @@ from django.views.generic import CreateView
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from .forms import SignUpForm
+from .forms import SignUpForm, LoginForm
 
 class IndexView(TemplateView):
     template_name = "core/index.html"
-
+    
 # @TODO: Redirect if already signed in
 class SignUpView(CreateView):
     form_class = SignUpForm
@@ -21,6 +21,7 @@ class SignUpView(CreateView):
 
 class LoginView(auth_views.LoginView):
     template_name = "core/login.html"
+    authentication_form = LoginForm
     next_page = "/"
     redirect_authenticated_user = True
 

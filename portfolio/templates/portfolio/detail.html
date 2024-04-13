@@ -1,0 +1,34 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+
+{% include "core/navbar.html" %}
+
+<header class="bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+        <h1 class="text-3xl font-bold tracking-tight text-gray-900">
+            {{project.name}}
+        </h1>
+    </div>
+</header>
+<main>
+    <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div class="flex flex-col gap-5">
+            {% if project.version_control %}
+            <a href="{{project.version_control}}" class="underline text-blue-500">
+                GitHub
+            </a>
+            {% endif %}
+
+            {% if project.website %}
+            <a href="{{project.website}}" class="underline text-blue-500">
+                Website
+            </a>
+            {% endif %}
+
+        </div>
+
+    </div>
+</main>
+
+{% endblock content %}

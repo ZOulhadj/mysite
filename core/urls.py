@@ -2,11 +2,14 @@ from django.urls import path, include
 
 from . import views
 
+app_name = "core"
+
 urlpatterns = [
     path("", views.IndexView.as_view(), name="index"),
     path("signup/", views.SignUpView.as_view(), name="signup"),
     path("login/", views.LoginView.as_view(), name="login"),
-    path("logout/", views.LogoutView.as_view(), name="logout"),
+
+    path("profile/logout/", views.LogoutView.as_view(), name="logout"),
     path("profile/password_change/", views.PasswordChangeView.as_view(), name="password_change"),
     path("profile/password_change/done/", views.PasswordChangeDoneView.as_view(), name="password_change_done"),
     path("profile/password_reset/", views.PasswordResetView.as_view(), name="password_reset"),

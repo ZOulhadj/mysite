@@ -4,13 +4,13 @@
 {% block content %}
 
 {% include "core/navbar.html" %}
-    <header class="bg-white">
-        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-            <h1 class="text-3xl font-bold tracking-tight text-gray-900">
-                Login
-            </h1>
-        </div>
-    </header>
+<header class="bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+        <h1 class="text-3xl font-bold tracking-tight text-gray-900">
+            Login
+        </h1>
+    </div>
+</header>
 
     <main>
         <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
@@ -27,7 +27,7 @@
             {% endif %}
             {% endif %}
 
-            <form method="post" action="{% url 'login' %}">
+            <form method="post" action="{% url 'core:login' %}">
                 {% csrf_token %}
                 <table>
                     <tr>
@@ -47,7 +47,7 @@
             </form>
 
             {# Assumes you set up the password_reset view in your URLconf #}
-            <a href="{% url 'password_reset' %}" class="hover:underline text-blue-500">
+            <a href="{% url 'core:password_reset' %}" class="hover:underline text-blue-500">
                 Lost password?
             </a>
         </div>

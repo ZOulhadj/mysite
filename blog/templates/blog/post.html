@@ -1,0 +1,42 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+
+{% include "core/navbar.html" %}
+
+<main>
+    <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+
+        <div class="mb-10">
+            <a href="{% url 'blog:index' %}" class="underline text-blue-500">
+                Back to blog home
+            </a>
+        </div>
+
+
+        <div class="pb-5">
+            <h1 class="text-4xl font-bold tracking-tight text-gray-900 pb-2 text-center">
+                {{post.title|capfirst}}
+            </h1>
+            <div class="flex flex-col text-xs text-gray-400">
+                <div>Posted on: {{post.created_date|date:"D, d M Y"}}</div>
+                {# <div>Last updated: {{post.updated_date|date:"D d, M Y"}}</div> #}
+            </div>
+            <p>
+                {{post.description}}
+            </p>
+        </div>
+        <p class="pb-5">
+            {{post.body}}
+        </p>
+
+
+        <div>
+            {% with view_count=post.view_count %}
+            Post has {{view_count}} view{{ view_count|pluralize }}
+            {% endwith %}
+        </div>
+    </div>
+</main>
+
+{% endblock content %}
