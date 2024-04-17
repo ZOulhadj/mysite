@@ -11,6 +11,7 @@ class Project(models.Model):
     website = models.URLField(null=True, blank=True)
     text = models.TextField(max_length=2000, blank=True)
     featured = models.BooleanField(default=False)
+    category = models.ManyToManyField("category", blank=True, related_name="projects")
     created_date = models.DateTimeField(auto_now_add=timezone.now)
     updated_date = models.DateTimeField(auto_now=timezone.now)
 
@@ -21,3 +22,13 @@ class Project(models.Model):
         if not self.slug:
             self.slug = slugify(self.name)
         super().save(*args, **kwargs)
+
+class Category(models.Model):
+    name = models.CharField(max_length=50)
+    description = models.TextField(max_length=100, blank=True)
+
+    class Meta:
+        verbose_name_plural = "categories"
+
+    def __str__(self):
+        return self.name

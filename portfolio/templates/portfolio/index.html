@@ -19,6 +19,11 @@
                 <a href="{% url 'portfolio:project_detail' project.slug %}" class="text-blue-500 text-2xl font-bold underline">
                     {{project.name}}
                 </a>
+                <span>
+                  {% for category in project.category.all %}
+                  {{category.name}}
+                  {% endfor %}
+                </span>
             </div>
             {% endfor %}
         </div>

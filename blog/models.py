@@ -4,6 +4,8 @@ from django.utils.translation import gettext_lazy as _
 
 from django.utils.text import slugify
 
+from colorfield.fields import ColorField
+
 class Post(models.Model):
     title = models.CharField(_("title"), max_length=100)
     slug = models.SlugField(unique=True)
@@ -15,7 +17,7 @@ class Post(models.Model):
     )
     created_date = models.DateTimeField(_("created date"), auto_now_add=timezone.now)
     updated_date = models.DateTimeField(_("updated date"), auto_now=timezone.now)
-    tags = models.ManyToManyField("tag", blank=True, related_name="posts")
+    tags = models.ManyToManyField("tag", blank=False, related_name="posts")
     body = models.TextField(_("body"), max_length=2000, blank=True)
     comments_allows = models.BooleanField(_("comments allowed"), default=True)
     view_count = models.IntegerField(default=0)
@@ -30,6 +32,7 @@ class Post(models.Model):
 
 class Tag(models.Model):
     name = models.CharField(_("tag"), max_length=20)
+    color = ColorField(default="#ff0000")
 
     def __str__(self):
         return self.name
