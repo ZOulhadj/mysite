@@ -13,7 +13,6 @@ class Post(models.Model):
     author = models.ForeignKey(
         "core.User",
         on_delete=models.CASCADE,
-
     )
     created_date = models.DateTimeField(_("created date"), auto_now_add=timezone.now)
     updated_date = models.DateTimeField(_("updated date"), auto_now=timezone.now)
@@ -43,7 +42,7 @@ class Comment(models.Model):
         on_delete=models.CASCADE,
     )
     post = models.ForeignKey(
-        "Post",
+        Post,
         on_delete=models.CASCADE,
     )
     created_date = models.DateTimeField(_("created date"), auto_now_add=timezone.now)

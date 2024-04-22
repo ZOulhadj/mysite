@@ -24,7 +24,7 @@
 
                 <div class="flex gap-2">
                   {% for tag in post.tags.all %}
-                  <a href="{% url 'blog:tag' tag.name %}" class="bg-blue-200 hover:bg-blue-400 text-gray-600 hover:text-white text-xs px-1.5 py-0.5 rounded-full">
+                  <a href="{% url 'blog:tag' tag.pk %}" class="bg-blue-200 hover:bg-blue-400 text-gray-600 hover:text-white text-xs px-1.5 py-0.5 rounded-full">
                     {{tag.name}}
                   </a>
                   {% endfor %}

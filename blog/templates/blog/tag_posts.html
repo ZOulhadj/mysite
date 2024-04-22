@@ -7,7 +7,7 @@
 <header class="bg-white">
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
         <h1 class="text-3xl font-bold tracking-tight text-gray-900">
-            Blog posts for {{request.resolver_match.kwargs.name}} tag
+            Blog posts for {{tag.name}} tag
         </h1>
     </div>
 </header>
@@ -20,82 +20,6 @@
 
         {% include "blog/post_list.html" %}
 
-        {% if is_paginated %}
-        <div class="flex justify-center">
-            <nav class="flex rounded hover:ring-1 hover:ring-inset hover:ring-gray-300 hover:bg-gray-50 active:bg-gray-200 active:shadow-inner">
-                <ul class="flex">
-                    {% if page_obj.has_previous %}
-                    <li>
-                        <a href="?page=1" class="py-2 px-4 bg-white hover:bg-gray-100 text-gray-800 hover:text-gray-900">
-                            First
-                        </a>
-                    </li>
-                    <li>
-                        <a href="?page={{ page_obj.previous_page_number }}" class="py-2 px-4 bg-white hover:bg-gray-100 text-gray-800 hover:text-gray-900">
-                            Previous
-                        </a>
-                    </li>
-                    {% else %}
-                    <li>
-                        <a href="#" class="py-2 px-4 bg-white text-gray-400">
-                            First
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="py-2 px-4 bg-white text-gray-400">
-                            Previous
-                        </a>
-                    </li>
-                    {% endif %}
-
-
-                    <!-- Page Numbers -->
-                    {% for pg in page_obj.paginator.page_range %}
-                    {% if page_obj.number == pg %}
-                    <li>
-                        <a href="?page={{pg}}" class="py-2 px-4 bg-gray-100 rounded text-gray-800 hover:text-gray-900">
-                            {{pg}}
-                        </a>
-                    </li>
-                    {% else %}
-                    <li>
-                        <a href="?page={{pg}}" class="py-2 px-4 bg-white hover:bg-gray-100 text-gray-800 hover:text-gray-900">
-                            {{pg}}
-                        </a>
-                    </li>
-                    {% endif %}
-                    {% endfor %}
-
-                    <!-- Next Button -->
-
-                    {% if page_obj.has_next %}
-                    <li>
-                        <a href="?page={{ page_obj.next_page_number }}" class="py-2 px-4 bg-white hover:bg-gray-100 text-gray-800 hover:text-gray-900">
-                            Next
-                        </a>
-                    </li>
-                    <li>
-                        <a href="?page={{ page_obj.paginator.num_pages }}" class="py-2 px-4 bg-white hover:bg-gray-100 text-gray-800 hover:text-gray-900">
-                            Last
-                        </a>
-                    </li>
-                    {% else %}
-                    <li>
-                        <a href="#" class="py-2 px-4 bg-white text-gray-400">
-                            Next
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="py-2 px-4 bg-white text-gray-400">
-                            Last
-                        </a>
-                    </li>
-                    {% endif %}
-                    </li>
-                </ul>
-            </nav>
-        </div>
-        {% endif %}
     </div>
 </main>
 

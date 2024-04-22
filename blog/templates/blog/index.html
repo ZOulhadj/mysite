@@ -22,7 +22,7 @@
             <h1 class="font-bold">Tags</h1>
             {% for tag in tag_list %}
             <div>
-              <a href="{% url 'blog:tag' tag.name %}" class="text-blue-500 text-xs font-bold underline">
+              <a href="{% url 'blog:tag' tag.pk %}" class="text-blue-500 text-xs font-bold underline">
                 {{tag.name}} (5)
               </a>
             </div>

@@ -1,13 +1,33 @@
 {% extends "core/base.html" %}
 
+{% load static %}
+
 {% block content %}
 
 {% include "core/navbar.html" %}
 
 <main>
-    <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+    <div class="flex flex-col items-center">
+      <img src="{% static 'core/images/me.jpg' %}" class="m-5 rounded-full" width="400" />
+      <h1 class="font-bold text-4xl">
+        Zakariya Oulhadj
+      </h1>
+      <p>
+        Interested in all things software related.
+      </p>
+
+
+      <div class="flex gap-5">
+        {% for social in social_list %}
+        <a href="{{social.website}}" class="underline text-blue-400" target="_blank">
+          {{social.name}}
+        </a>
+        {% endfor %}
+      </div>
 
     </div>
+  </div>
 </main>
 
 {% endblock content %}

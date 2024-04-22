@@ -29,10 +29,12 @@ class PostView(DetailView):
         obj.save()
         return obj
 
-class TagDetailView(ListView):
+class TagDetailView(DetailView):
     template_name = "blog/tag_posts.html"
     model = Tag
 
-    def get_queryset(self):
-        #tag_name = self.kwargs["tag__name"]
-        return Post.objects.filter(tags__name__icontains="")
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        data["post_list"] = Post.objects.filter(tags=self.object)
+
+        return data

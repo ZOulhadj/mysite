@@ -1,0 +1,52 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+
+{% include "core/navbar.html" %}
+
+<header class="bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+        <h1 class="text-3xl font-bold tracking-tight text-gray-900">
+            Gallery
+        </h1>
+    </div>
+</header>
+<main>
+    <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div class="flex flex-col gap-10">
+
+            <div>
+                <div class="flex gap-10 justify-center items-center">
+                    {% for album in album_list %}
+                    <div class="flex flex-col items-center">
+                        <a href="{% url 'gallery:album_detail' album.pk %}" class="border-2 border-transparent hover:border-white rounded-full">
+                            <img class="h-20 w-20 object-cover rounded-full ring-2 ring-white" src="{{album.cover.url}}" />
+                        </a>
+                        <h1 class="py-1.5">
+                            {{album.name}}
+                        </h1>
+                    </div>
+                    {% endfor %}
+                </div>
+                <a href="{% url 'gallery:albums' %}" class="bg-green-300 text-gray-800 rounded-sm px-2 py-1.5 float-right">
+                    View all
+                </a>
+            </div>
+
+            <div class="w-full border border-gray-400"></div>
+
+            <div class="grid grid-cols-3 gap-4">
+                {% for image in image_list %}
+                <div class="flex flex-col gap-2">
+                    <a href="#" class="rounded-lg">
+                        <img src="{{image.image.url}}" class="rounded-lg" />
+                    </a>
+                </div>
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock content %}

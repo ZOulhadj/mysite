@@ -23,7 +23,12 @@ class UserAdmin(BaseUserAdmin):
     list_display = ['username', 'email', 'first_name', 'last_name', 'is_staff']
 
 
+class SocialAdmin(admin.ModelAdmin):
+    list_display = ["name", "website"]
+
+
 admin.site.register(User, UserAdmin)
+admin.site.register(Social, SocialAdmin)
 
 # ... and, since we're not using Django's built-in permissions,
 # unregister the Group model from admin.

@@ -8,11 +8,18 @@ from django.views.generic import CreateView
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+from .models import Social
 from .forms import SignUpForm, LoginForm
 
 class IndexView(TemplateView):
     template_name = "core/index.html"
-    
+
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        data["social_list"] = Social.objects.order_by("name")
+
+        return data
+
 # @TODO: Redirect if already signed in
 class SignUpView(CreateView):
     form_class = SignUpForm
