@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.utils import timezone
 
 class Album(models.Model):
@@ -7,6 +8,9 @@ class Album(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse("gallery:album_detail", args=[self.id])
 
 
 class Image(models.Model):

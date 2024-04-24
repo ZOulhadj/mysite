@@ -3,7 +3,7 @@ from django.contrib import admin
 from .models import *
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ["title", "description", "author", "created_date", "updated_date"]
+    list_display = ["title", "description", "author", "created_date", "updated_date", "published"]
     prepopulated_fields = {"slug": ("title",)}
     readonly_fields = ["view_count", "created_date", "updated_date"]
     filter_horizontal = ("tags",)

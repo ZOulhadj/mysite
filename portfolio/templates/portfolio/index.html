@@ -1,14 +1,15 @@
-{% extends "core/base.html" %}
+{% extends "portfolio/base.html" %}
 
-{% block content %}
+{% block portfolio_content %}
 
-{% include "core/navbar.html" %}
-
-<header class="bg-white">
-  <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-    <h1 class="text-3xl font-bold tracking-tight text-gray-900">
+<header class="bg-gray-50 text-black">
+  <div class="mx-auto max-w-7xl px-4 py-16">
+    <h1 class="text-5xl font-bold mb-5">
       Portfolio
     </h1>
+    <p class="">
+      My projects and various work can be see listed here on this page.
+    </p>
   </div>
 </header>
 <main>
@@ -22,7 +23,7 @@
     <div class="flex flex-col gap-5">
       {% for project in project_list %}
       <div>
-        <a href="{% url 'portfolio:project_detail' project.slug %}" class="text-blue-500 text-2xl font-bold underline">
+        <a href="{{project.get_absolute_url}}" class="text-blue-500 text-2xl font-bold underline">
           {{project.name}}
         </a>
         <span>
@@ -37,4 +38,4 @@
   </div>
 </main>
 
-{% endblock content %}
+{% endblock portfolio_content %}

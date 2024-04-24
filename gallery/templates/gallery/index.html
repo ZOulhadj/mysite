@@ -1,25 +1,24 @@
-{% extends "core/base.html" %}
+{% extends "gallery/base.html" %}
 
-{% block content %}
-
-{% include "core/navbar.html" %}
-
-<header class="bg-white">
-    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-        <h1 class="text-3xl font-bold tracking-tight text-gray-900">
+{% block gallery_content %}
+<header class="bg-gray-50 text-black">
+    <div class="mx-auto max-w-7xl px-4 py-16">
+        <h1 class="text-5xl font-bold mb-5">
             Gallery
         </h1>
+        <p class="">
+            A collection of images that videos that I share.
+        </p>
     </div>
 </header>
 <main>
     <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="flex flex-col gap-10">
-
             <div>
                 <div class="flex gap-10 justify-center items-center">
                     {% for album in album_list %}
                     <div class="flex flex-col items-center">
-                        <a href="{% url 'gallery:album_detail' album.pk %}" class="border-2 border-transparent hover:border-white rounded-full">
+                        <a href="{{album.get_absolute_url}}" class="border-2 border-transparent hover:border-white rounded-full">
                             <img class="h-20 w-20 object-cover rounded-full ring-2 ring-white" src="{{album.cover.url}}" />
                         </a>
                         <h1 class="py-1.5">
@@ -38,8 +37,8 @@
             <div class="grid grid-cols-3 gap-4">
                 {% for image in image_list %}
                 <div class="flex flex-col gap-2">
-                    <a href="#" class="rounded-lg">
-                        <img src="{{image.image.url}}" class="rounded-lg" />
+                    <a href="{{image.image.url}}" class="">
+                        <img src="{{image.image.url}}" class="" />
                     </a>
                 </div>
 
@@ -48,5 +47,4 @@
         </div>
     </div>
 </main>
-
-{% endblock content %}
+{% endblock gallery_content %}

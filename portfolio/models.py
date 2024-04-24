@@ -1,7 +1,7 @@
 from django.db import models
+from django.urls import reverse
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
-
 from django.utils.text import slugify
 
 class Project(models.Model):
@@ -22,6 +22,10 @@ class Project(models.Model):
         if not self.slug:
             self.slug = slugify(self.name)
         super().save(*args, **kwargs)
+
+
+    def get_absolute_url(self):
+        return reverse("portfolio:project_detail", args=[self.slug])
 
 
 class Category(models.Model):
