@@ -3,6 +3,15 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y0Q73276KJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-Y0Q73276KJ');
+    </script>
 
 
     <title>Zakariya Oulhadj</title>
@@ -22,8 +31,5 @@
   <body>
     {% block content %}
     {% endblock content %}
-
-
-    <script src="{% static 'core/main.js' %}"></script>
   </body>
 </html>
