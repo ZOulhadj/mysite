@@ -1,16 +1,20 @@
-<div class="p-2 border-b border-stone-100">
-  <div class="mx-auto max-w-7xl">
-    <a href="{% url 'core:index' %}" class="inline-flex justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 font-semibold text-gray-900 hover:shadow-sm hover:ring-1 hover:ring-inset hover:ring-gray-300 hover:bg-gray-50 active:bg-gray-200 active:shadow-inner" aria-expanded="true" aria-haspopup="true">
-      Home
-    </a>
-    <a href="{% url 'blog:index' %}" class="inline-flex justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 font-semibold text-gray-900 hover:shadow-sm hover:ring-1 hover:ring-inset hover:ring-gray-300 hover:bg-gray-50 active:bg-gray-200 active:shadow-inner" aria-expanded="true" aria-haspopup="true">
-      Blog
-    </a>
-    <a href="{% url 'portfolio:index' %}" class="inline-flex justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 font-semibold text-gray-900 hover:shadow-sm hover:ring-1 hover:ring-inset hover:ring-gray-300 hover:bg-gray-50 active:bg-gray-200 active:shadow-inner" aria-expanded="true" aria-haspopup="true">
-      Portfolio
-    </a>
-    <a href="{% url 'gallery:index' %}" class="inline-flex justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 font-semibold text-gray-900 hover:shadow-sm hover:ring-1 hover:ring-inset hover:ring-gray-300 hover:bg-gray-50 active:bg-gray-200 active:shadow-inner" aria-expanded="true" aria-haspopup="true">
-      Gallery
-    </a>
-  </div>
+<div class="border-b border-stone-100">
+    <div class="mx-auto max-w-7xl">
+        <div class="flex justify-center items-center gap-5">
+            <a href="{% url 'core:index' %}" class="text-blue-500 hover:underline active:text-orange-500 visited:text-purple-500">
+                Home
+            </a>
+            <a href="{% url 'blog:index' %}" class="text-blue-500 hover:underline active:text-orange-500 visited:text-purple-500">
+                Blog
+            </a>
+            <a href="{% url 'portfolio:index' %}" class="text-blue-500 hover:underline active:text-orange-500 visited:text-purple-500">
+                Portfolio
+            </a>
+            {% comment %}
+            <a href="{% url 'gallery:index' %}" class="text-blue-500 hover:underline active:text-orange-500 visited:text-purple-500">
+                Gallery
+            </a>
+            {% endcomment %}
+        </div>
+    </div>
 </div>

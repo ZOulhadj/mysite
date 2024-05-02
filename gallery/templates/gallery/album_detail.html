@@ -18,17 +18,7 @@
             </div>
         </div>
 
-        <div class="grid grid-cols-3 gap-4">
-            {% for image in image_list %}
-            <div class="flex flex-col gap-2">
-                <a href="#" class="rounded-lg">
-                    <img src="{{image.image.url}}" class="rounded-lg" />
-                </a>
-            </div>
-
-            {% endfor %}
-        </div>
-
+        {% include "gallery/image_grid_component.html" %}
     </div>
 </main>
 

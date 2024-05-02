@@ -4,12 +4,15 @@ from django.urls import reverse_lazy
 
 from django.views.generic.base import TemplateView
 from django.views.generic import CreateView
+from django.views.generic.edit import FormView
 
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Social
-from .forms import SignUpForm, LoginForm
+from .forms import ContactForm, SignUpForm, LoginForm
+
+from blog.models import Post
 
 class IndexView(TemplateView):
     template_name = "core/index.html"
@@ -17,8 +20,21 @@ class IndexView(TemplateView):
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
         data["social_list"] = Social.objects.order_by("name")
+        data["post_list"] = Post.objects.filter(published=True).order_by("-created_date")[:5]
 
         return data
+
+
+class ContactView(FormView):
+    template_name = "core/contact.html"
+    form_class = ContactForm
+    success_url = "/thanks/"
+
+    def form_valid(self, form):
+        form.send_email()
+
+        return super().form_valid(form)
+
 
 # @TODO: Redirect if already signed in
 class SignUpView(CreateView):

@@ -15,24 +15,62 @@
 <main>
   <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
 
-    <a href="{% url 'portfolio:cv' %}" class="underline text-blue-400">
-      CV
+
+    <a href="{% url 'portfolio:cv' %}" class="text-white bg-blue-200 px-2 py-1.5">
+      View CV
     </a>
 
+    <div class="">
+      <h1 class="font-bold text-2xl py-4">
+        Featured Work
+      </h1>
 
-    <div class="flex flex-col gap-5">
-      {% for project in project_list %}
-      <div>
-        <a href="{{project.get_absolute_url}}" class="text-blue-500 text-2xl font-bold underline">
-          {{project.name}}
-        </a>
-        <span>
-          {% for category in project.category.all %}
-          {{category.name}}
-          {% endfor %}
-        </span>
+      <div class="grid grid-cols-3 gap-4">
+        {% for project in featured_list %}
+        <div class="border rounded px-5 py-4 shadow">
+          <a href="{{project.get_absolute_url}}" class="text-blue-500 text-2xl font-bold underline">
+            {{project.name}}
+          </a>
+          <p>
+            {{project.description}}
+          </p>
+          <div class="text-sm bg-blue-200">
+            {% for category in project.category.all %}
+            <a href="#">
+              {{category.name}}
+            </a>
+            {% endfor %}
+          </div>
+        </div>
+        {% endfor %}
       </div>
-      {% endfor %}
+    </div>
+
+    <hr class="border border-black my-5">
+
+    <div>
+      <h1 class="font-bold text-2xl py-4">
+        All Projects
+      </h1>
+
+
+      <div class="grid grid-cols-3 gap-4">
+        {% for project in project_list %}
+        <div class="border rounded px-5 py-4">
+          <a href="{{project.get_absolute_url}}" class="text-blue-500 text-2xl font-bold underline">
+            {{project.name}}
+          </a>
+          <p>
+            {{project.description}}
+          </p>
+          <span class="text-sm">
+            {% for category in project.category.all %}
+            {{category.name}}
+            {% endfor %}
+          </span>
+        </div>
+        {% endfor %}
+      </div>
     </div>
 
   </div>

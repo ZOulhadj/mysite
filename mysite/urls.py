@@ -23,6 +23,6 @@ urlpatterns = [
     path("", include("core.urls", namespace="core")),
     path("blog/", include("blog.urls", namespace="blog")),
     path("portfolio/", include("portfolio.urls", namespace="portfolio")),
-    path("gallery/", include("gallery.urls", namespace="gallery")),
+    #path("gallery/", include("gallery.urls", namespace="gallery")),
     path("admin/", admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

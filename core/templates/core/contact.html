@@ -1,0 +1,5 @@
+<form action="{% url 'core:index' %}" method="post" class="flex items-center justify-center">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit" class="">
+</form>

@@ -1,33 +1,70 @@
 {% extends "core/base.html" %}
 
 {% load static %}
-
-{% block content %}
-
-{% include "core/navbar.html" %}
+{% block core_content %}
 
 <main>
-  <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-    <div class="flex flex-col items-center">
-      <img src="{% static 'core/images/me.jpg' %}" class="m-5 rounded-full" width="400" />
-      <h1 class="font-bold text-4xl">
-        Zakariya Oulhadj
-      </h1>
-      <p>
-        Interested in all things software related.
-      </p>
-
-
-      <div class="flex gap-5">
-        {% for social in social_list %}
-        <a href="{{social.website}}" class="underline text-blue-400" target="_blank">
-          {{social.name}}
-        </a>
-        {% endfor %}
+  <div class="mx-auto max-w-7xl py-6">
+    <div class="flex gap-4 mb-10">
+      <div class="">
+        <img src="{% static 'core/images/me.jpg' %}" class="border border-gray-400 mb-2" width="200" />
+        <figcaption class="text-center italic text-xs w-[200px] text-gray-600">
+          "Hardware is only as good as the software that drives it"
+        </figcaption>
       </div>
+      <div>
+        <h1 class="font-bold text-xl">
+          BSc. Zakariya Oulhadj
+        </h1>
+        <h1 class="bold">
+          Graduate Software Engineer
+        </h1>
+        <h1 class="">
+          London, UK
+        </h1>
+        <div>
+          <a href="{% url 'portfolio:cv' %}" class="hover:underline text-blue-500 active:text-orange-500 visited:text-purple-500">
+            CV
+          </a>
+        </div>
+        <div>
+          <a href="mailto:contact@zakariyaoulhadj.com" class="hover:underline text-blue-500 active:text-orange-500 visited:text-purple-500">
+            contact@zakariyaoulhadj.com
+          </a>
+        </div>
 
+      </div>
     </div>
+
+    {% if post_list %}
+    <div class="">
+      <h1 class="font-bold text-2xl">
+        Recent posts
+      </h1>
+      <ul class="mb-5">
+        {% for post in post_list %}
+        <li class="flex items-center gap-2">
+          <div class="text-sm text-gray-500">
+            {{post.created_date|date:"d/m/Y"}}
+          </div>
+          <span class="text-gray-500">
+            &mdash;
+          </span>
+          <a href="{{post.get_absolute_url}}" class="text-blue-500 hover:underline active:text-orange-500 visited:text-purple-500">
+            {{post.title}}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+      <p>
+        View all my blog posts
+        <a href="{% url 'blog:index' %}" class="text-blue-500 hover:underline active:text-orange-500 visited:text-purple-500">
+          here
+        </a>
+      </p>
+    </div>
+    {% endif %}
   </div>
 </main>
 
-{% endblock content %}
+{% endblock core_content %}

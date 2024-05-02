@@ -1,0 +1,10 @@
+<div class="grid grid-cols-3 gap-4">
+    {% for image in image_list %}
+    <div class="flex flex-col gap-2">
+        <a href="{{image.image.url}}" class="">
+            <img src="{{image.image.url}}" class="" />
+        </a>
+    </div>
+
+    {% endfor %}
+</div>

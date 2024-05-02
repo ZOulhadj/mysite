@@ -14,3 +14,13 @@ class LoginForm(AuthenticationForm):
 
 # class ChangeUserForm(models.Forms):
 #     fields = ["username", "image"]
+
+
+class ContactForm(forms.Form):
+    subject = forms.CharField(max_length=100)
+    name = forms.CharField(max_length=100)
+    email = forms.EmailField()
+    body = forms.CharField(widget=forms.Textarea, max_length=2000)
+
+    def send_email(self):
+        print("Sending contact form")

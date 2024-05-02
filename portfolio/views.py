@@ -7,6 +7,12 @@ class IndexView(ListView):
     template_name = "portfolio/index.html"
     model = Project
 
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        data["featured_list"] = Project.objects.filter(featured=True)
+
+        return data
+
 
 class ProjectDetailView(DetailView):
     template_name = "portfolio/detail.html"

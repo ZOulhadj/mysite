@@ -1,35 +1,14 @@
-{% load static %}
+{% extends "core/core.html" %}
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y0Q73276KJ"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+{% block content %}
 
-      gtag('config', 'G-Y0Q73276KJ');
-    </script>
+{% include "core/navbar.html" %}
 
+<section class="">
+    {% block core_content %}
+    {% endblock core_content %}
+</section>
 
-    <title>Zakariya Oulhadj</title>
+{% include "core/footer.html" %}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'core/styles.css' %}">
-    <link rel="icon" type="image/x-icon" href="{% static 'core/favicon.ico' %}">
-
-    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://kit.fontawesome.com/5ccda46141.js" crossorigin="anonymous"></script>
-
-  </head>
-
-  <body>
-    {% block content %}
-    {% endblock content %}
-  </body>
-</html>
+{% endblock content %}

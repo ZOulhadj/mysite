@@ -22,17 +22,16 @@
       </div>
 
       <div class="flex">
-        <form action="{% url 'blog:index' %}" method="get" id="post-form">
-          <input type="text" name="s" class="border-2 py-1 h-full">
+        <form action="{% url 'blog:index' %}" method="get" class="flex items-center justify-center">
+          {% csrf_token %}
+          {{ form }}
+          <input type="submit" value="Submit" class="bg-green-200 px-2 py-1.5 hover:cursor-pointer">
         </form>
-        <button type="submit" form="post-form" class="bg-green-600 border-2 border-green-600 px-1.5 py-1 text-white h-full">
-          Search
-        </button>
       </div>
 
       <div class="">
         <i class="fa-solid fa-rss mx-1"></i>
-        <a href="temp-link/" class="hover:underline text-blue-500 active:text-orange-500 visited:text-purple-500">
+        <a href="{% url 'blog:rss' %}" class="hover:underline text-blue-500 active:text-orange-500 visited:text-purple-500">
 
           Subscribe to RSS feed
         </a>

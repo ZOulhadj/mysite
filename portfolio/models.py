@@ -4,14 +4,27 @@ from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django.utils.text import slugify
 
+
+class Category(models.Model):
+    name = models.CharField(max_length=50)
+    description = models.TextField(max_length=100, blank=True)
+
+    class Meta:
+        verbose_name_plural = "categories"
+
+    def __str__(self):
+        return self.name
+
+
 class Project(models.Model):
     name = models.CharField(max_length=50)
     slug = models.SlugField(unique=True)
     version_control = models.URLField(null=True, blank=True)
     website = models.URLField(null=True, blank=True)
+    description = models.CharField(max_length=200, blank=True)
     text = models.TextField(max_length=2000, blank=True)
     featured = models.BooleanField(default=False)
-    category = models.ManyToManyField("category", blank=True, related_name="projects")
+    category = models.ManyToManyField(Category, blank=True, related_name="projects")
     created_date = models.DateTimeField(auto_now_add=timezone.now)
     updated_date = models.DateTimeField(auto_now=timezone.now)
 
@@ -26,17 +39,6 @@ class Project(models.Model):
 
     def get_absolute_url(self):
         return reverse("portfolio:project_detail", args=[self.slug])
-
-
-class Category(models.Model):
-    name = models.CharField(max_length=50)
-    description = models.TextField(max_length=100, blank=True)
-
-    class Meta:
-        verbose_name_plural = "categories"
-
-    def __str__(self):
-        return self.name
 
 
 class School(models.Model):

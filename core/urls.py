@@ -15,6 +15,7 @@ app_name = "core"
 
 urlpatterns = [
     path("", views.IndexView.as_view(), name="index"),
+    path("contact/", views.ContactView.as_view(), name="contact"),
     path("signup/", views.SignUpView.as_view(), name="signup"),
     path("login/", views.LoginView.as_view(), name="login"),
 

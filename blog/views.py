@@ -6,6 +6,8 @@ from django.db.models import Q
 
 from .models import Post, Tag
 
+from .forms import SearchForm
+
 class IndexView(ListView):
     template_name = "blog/index.html"
     allow_empty = True
@@ -23,6 +25,8 @@ class IndexView(ListView):
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
         data["tag_list"] = Tag.objects.order_by("name")
+        data["form"] = SearchForm()
+
 
         return data
 
