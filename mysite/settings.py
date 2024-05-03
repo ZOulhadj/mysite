@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import os
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -18,15 +20,23 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-with open(BASE_DIR / "secret_key.txt") as f:
-    SECRET_KEY = f.read().strip()
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+# SECURITY WARNING: keep the secret key used in production secret!
+if not DEBUG:
+    SECRET_KEY = os.environ['SECRET_KEY']
+else:
+    SECRET_KEY = "django-insecure-8o*8_an-!kj!aj#)5xy+!y)!ul+0#y0srs%j195#7+0p&2snb*"
 
+ALLOWED_HOSTS = [
+    "www.zakariyaoulhadj.com",
+    "zakariyaoulhadj.com",
+    "localhost",
+    "127.0.0.1"
+]
 
 # Application definition
 
@@ -133,3 +143,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = "core.User"
 
 # GTAGS_ID = "G-Y0Q73276KJ"
+
+EMAIL = "contact@zakariyaoulhadj.com"

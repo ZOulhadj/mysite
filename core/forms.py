@@ -23,4 +23,6 @@ class ContactForm(forms.Form):
     body = forms.CharField(widget=forms.Textarea, max_length=2000)
 
     def send_email(self):
+        # @TODO: Only send email a valid email has been set from within
+        # settings.py.
         print("Sending contact form")

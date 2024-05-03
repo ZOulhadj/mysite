@@ -21,6 +21,7 @@
         {{post_list|length}} Result{{post_list|length|pluralize}}
       </div>
 
+      {% comment %}
       <div class="flex">
         <form action="{% url 'blog:index' %}" method="get" class="flex items-center justify-center">
           {% csrf_token %}
@@ -36,6 +37,7 @@
           Subscribe to RSS feed
         </a>
       </div>
+      {% endcomment %}
     </div>
 
     <hr class="border border-black my-5">
