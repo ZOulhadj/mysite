@@ -1,5 +1,5 @@
-# Personal Website
+# Django website
 
-My work in progress personal website hosted at [zakariyaoulhadj.com](https://zakariyaoulhadj.com).
+A small project to learn Django.
 
 ![main](.github/main.png "Main")
